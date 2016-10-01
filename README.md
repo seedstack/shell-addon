@@ -1,8 +1,8 @@
-# SeedStack JPA add-on
+# SeedStack Shell add-on
 
-[![Build status](https://travis-ci.org/seedstack/jpa-addon.svg?branch=master)](https://travis-ci.org/seedstack/jpa-addon) [![Coverage Status](https://coveralls.io/repos/seedstack/jpa-addon/badge.svg?branch=master)](https://coveralls.io/r/seedstack/jpa-addon?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.jpa/jpa/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.jpa/jpa)
+[![Build status](https://travis-ci.org/seedstack/shell-addon.svg?branch=master)](https://travis-ci.org/seedstack/shell-addon) [![Coverage Status](https://coveralls.io/repos/seedstack/shell-addon/badge.svg?branch=master)](https://coveralls.io/r/seedstack/shell-addon?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.shell/shell/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.shell/shell)
 
-Official JPA integration for SeedStack.
+SeedStack SSH shell to execute service commands.
 
 # Copyright and license
 
