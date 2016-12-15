@@ -8,9 +8,9 @@
 package org.seedstack.shell.internal.commands;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.seedstack.seed.spi.command.Argument;
-import org.seedstack.seed.spi.command.Command;
-import org.seedstack.seed.spi.command.CommandDefinition;
+import org.seedstack.seed.command.Argument;
+import org.seedstack.seed.command.Command;
+import org.seedstack.seed.command.CommandDefinition;
 
 /**
  * This command stringify any input object.

@@ -7,7 +7,7 @@
  */
 package org.seedstack.shell.internal;
 
-import org.seedstack.seed.ErrorCode;
+import org.seedstack.shed.exception.ErrorCode;
 
 enum ShellErrorCode implements ErrorCode {
     COMMAND_PARSING_ERROR,

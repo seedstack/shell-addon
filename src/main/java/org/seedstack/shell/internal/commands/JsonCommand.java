@@ -13,9 +13,9 @@ import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.seedstack.seed.spi.command.CommandDefinition;
-import org.seedstack.seed.spi.command.Option;
-import org.seedstack.seed.spi.command.PrettyCommand;
+import org.seedstack.seed.command.CommandDefinition;
+import org.seedstack.seed.command.Option;
+import org.seedstack.seed.command.PrettyCommand;
 
 /**
  * This command serialize the input object to json.

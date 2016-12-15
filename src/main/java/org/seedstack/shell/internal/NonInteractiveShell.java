@@ -13,9 +13,9 @@ import com.google.inject.assistedinject.Assisted;
 import org.apache.shiro.concurrent.SubjectAwareExecutorService;
 import org.apache.shiro.util.ThreadContext;
 import org.apache.sshd.server.Environment;
+import org.seedstack.seed.command.Command;
+import org.seedstack.seed.command.StreamCommand;
 import org.seedstack.shell.internal.commands.JsonCommand;
-import org.seedstack.seed.spi.command.Command;
-import org.seedstack.seed.spi.command.StreamCommand;
 
 import javax.inject.Inject;
 import java.io.IOException;

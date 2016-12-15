@@ -15,9 +15,9 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.sshd.server.ExitCallback;
-import org.seedstack.seed.CommandRegistry;
 import org.seedstack.seed.SeedException;
-import org.seedstack.seed.spi.command.Command;
+import org.seedstack.seed.command.Command;
+import org.seedstack.seed.command.CommandRegistry;
 
 import javax.inject.Inject;
 import java.io.InputStream;
@@ -133,7 +133,7 @@ abstract class AbstractShell implements org.apache.sshd.server.Command, Runnable
 
         // Build CLI options
         Options options = new Options();
-        for (org.seedstack.seed.spi.command.Option option : commandRegistry.getOptionsInfo(commandScope, commandName)) {
+        for (org.seedstack.seed.command.Option option : commandRegistry.getOptionsInfo(commandScope, commandName)) {
             options.addOption(option.name(), option.longName(), option.hasArgument(), option.description());
         }
 
