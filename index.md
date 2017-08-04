@@ -12,7 +12,9 @@ menu:
         weight: 10
 ---
 
-SeedStack shell add-on provides access to application administrative commands through SSH protocol in two different modes:
+SeedStack shell add-on provides access to application administrative commands through SSH protocol.<!--more-->
+ 
+It works in two different modes:
 
 * Interactive mode consists in providing of a simple line-based shell with auto-completion, history and the ability to display
 command results as a string. In this mode, commands have no access to low-level input, output and error streams. They
