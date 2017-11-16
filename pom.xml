@@ -18,10 +18,10 @@
 
     <groupId>org.seedstack.addons.shell</groupId>
     <artifactId>shell</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <properties>
-        <seed.version>3.0.0</seed.version>
+        <seed.version>3.4.0-SNAPSHOT</seed.version>
 
         <compatibility.skip>true</compatibility.skip>
 

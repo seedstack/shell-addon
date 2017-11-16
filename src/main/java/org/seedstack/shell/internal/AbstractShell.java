@@ -5,9 +5,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
 package org.seedstack.shell.internal;
 
 import com.google.common.base.Strings;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import javax.inject.Inject;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -19,27 +29,15 @@ import org.seedstack.seed.SeedException;
 import org.seedstack.seed.command.Command;
 import org.seedstack.seed.command.CommandRegistry;
 
-import javax.inject.Inject;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
 abstract class AbstractShell implements org.apache.sshd.server.Command, Runnable {
-    public static final String COMMAND_PATTERN = "([a-zA-Z][a-zA-Z0-9\\-]+:)?[a-zA-Z][a-zA-Z0-9\\-]+";
+    private static final String COMMAND_PATTERN = "([a-zA-Z][a-zA-Z0-9\\-]+:)?[a-zA-Z][a-zA-Z0-9\\-]+";
     private final CommandLineParser commandLineParser = new DefaultParser();
-
-    protected InputStream inputStream;
-    protected OutputStream outputStream;
-    protected OutputStream errorStream;
-    protected ExitCallback exitCallback;
-
+    InputStream inputStream;
+    OutputStream outputStream;
+    OutputStream errorStream;
+    ExitCallback exitCallback;
     @Inject
-    protected CommandRegistry commandRegistry;
+    CommandRegistry commandRegistry;
 
     @Override
     public void setInputStream(InputStream inputStream) {
@@ -61,7 +59,7 @@ abstract class AbstractShell implements org.apache.sshd.server.Command, Runnable
         this.exitCallback = exitCallback;
     }
 
-    protected List<Command> createCommandActions(String line) {
+    List<Command> createCommandActions(String line) {
         if (Strings.isNullOrEmpty(line)) {
             return new ArrayList<>();
         }
@@ -114,7 +112,7 @@ abstract class AbstractShell implements org.apache.sshd.server.Command, Runnable
     }
 
     @SuppressWarnings("unchecked")
-    protected Command createCommandAction(String qualifiedName, List<String> args) {
+    Command createCommandAction(String qualifiedName, List<String> args) {
         if (Strings.isNullOrEmpty(qualifiedName)) {
             throw SeedException.createNew(ShellErrorCode.MISSING_COMMAND);
         }
@@ -153,7 +151,7 @@ abstract class AbstractShell implements org.apache.sshd.server.Command, Runnable
         return commandRegistry.createCommand(commandScope, commandName, cmd.getArgList(), optionValues);
     }
 
-    protected String stripAnsiCharacters(String value) {
+    String stripAnsiCharacters(String value) {
         return value.replaceAll("\\e\\[[\\d;]*[^\\d;]", "");
     }
 }

@@ -5,9 +5,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
 package org.seedstack.shell.internal;
 
 import com.google.common.base.Strings;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.Executors;
+import javax.inject.Inject;
 import jline.Terminal;
 import jline.UnsupportedTerminal;
 import jline.console.ConsoleReader;
@@ -24,17 +31,10 @@ import org.seedstack.seed.command.PrettyCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Executors;
-
 class InteractiveShell extends AbstractShell {
     private static final Logger LOGGER = LoggerFactory.getLogger(InteractiveShell.class);
-    public static final String DETAILS_MESSAGE = "Details of the previous error below";
-    public static final String WELCOME_MESSAGE = "    _______________    ______ ________   __ \n" +
+    private static final String DETAILS_MESSAGE = "Details of the previous error below";
+    private static final String WELCOME_MESSAGE = "    _______________    ______ ________   __ \n" +
             "   / __/ __/ __/ _ \\  / __/ // / __/ /  / / \n" +
             "  _\\ \\/ _// _// // / _\\ \\/ _  / _// /__/ /__\n" +
             " /___/___/___/____/ /___/_//_/___/____/____/\n";
@@ -196,7 +196,8 @@ class InteractiveShell extends AbstractShell {
             try {
                 defaultOutputMode = OutputMode.valueOf(modeValue.toUpperCase());
             } catch (IllegalArgumentException e) {
-                throw SeedException.wrap(e, ShellErrorCode.ILLEGAL_MODE_OPTION).put("supportedOptions", Arrays.toString(OutputMode.values()));
+                throw SeedException.wrap(e, ShellErrorCode.ILLEGAL_MODE_OPTION)
+                        .put("supportedOptions", Arrays.toString(OutputMode.values()));
             }
         } else if ("pretty".equals(modeName)) {
             if ("on".equalsIgnoreCase(modeValue)) {
@@ -215,7 +216,8 @@ class InteractiveShell extends AbstractShell {
                 throw SeedException.createNew(ShellErrorCode.ILLEGAL_MODE_OPTION).put("supportedOptions", "on|off");
             }
         } else {
-            throw SeedException.createNew(ShellErrorCode.ILLEGAL_MODE).put("supportedModes", "output|pretty|stacktraces");
+            throw SeedException.createNew(ShellErrorCode.ILLEGAL_MODE)
+                    .put("supportedModes", "output|pretty|stacktraces");
         }
     }
 
