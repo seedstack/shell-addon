@@ -1,5 +1,6 @@
 ---
 title: "Shell"
+addon: "Shell"
 repo: "https://github.com/seedstack/shell-addon"
 author: Adrien LAUER
 description: "Provides SSH access to application adminitrative commands" 
@@ -7,9 +8,7 @@ tags:
     - cli
 zones:
     - Addons
-menu:
-    AddonShell:
-        weight: 10
+noMenu: true    
 ---
 
 SeedStack shell add-on provides access to application administrative commands through SSH protocol.<!--more-->
@@ -27,11 +26,11 @@ While the SSH protocol is used by this add-on, please note that it can only acce
 system access is possible from this shell.**
 {{% /callout %}}
 
-# Dependency 
+## Dependency 
 
 {{< dependency g="org.seedstack.addons.shell" a="shell" >}}
 
-# Configuration
+## Configuration
 
 Shell access can be configured with the following options:
 
@@ -59,7 +58,7 @@ Don't use a generated key in a production environment as this is NOT secured fro
 When the key is stored in a file or a classpath resource location, it must be in a JCE serialized format.
 {{% /callout %}}
 
-# Usage
+## Usage
 
 Use your preferred SSH client to connect to the configured port. All commands registered in the {{< java "org.seedstack.seed.command.CommandRegistry" >}} 
 can be invoked from both interactive and direct modes. You can specify command name, arguments and options using a GNU-like syntax:
