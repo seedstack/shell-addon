@@ -5,10 +5,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
 package org.seedstack.shell.internal.commands;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.seedstack.seed.command.Argument;
 import org.seedstack.seed.command.Command;
 import org.seedstack.seed.command.CommandDefinition;
 
@@ -17,17 +16,14 @@ import org.seedstack.seed.command.CommandDefinition;
  *
  * @author adrien.lauer@mpsa.com
  */
-@CommandDefinition(scope = "", name = "str", description = "Return the argument string")
+@CommandDefinition(scope = "", name = "str", description = "Return the argument as a string")
 public class StrCommand implements Command {
-    @Argument(index = 0, description = "The property to get", mandatory = false, defaultValue = "")
-    private String string;
-
     @Override
     public Object execute(Object object) throws Exception {
         if (object != null) {
             return object.toString();
+        } else {
+            return null;
         }
-
-        return BeanUtils.getProperty(object, string);
     }
 }

@@ -31,6 +31,7 @@ import org.seedstack.seed.command.CommandRegistry;
 
 abstract class AbstractShell implements org.apache.sshd.server.Command, Runnable {
     private static final String COMMAND_PATTERN = "([a-zA-Z][a-zA-Z0-9\\-]+:)?[a-zA-Z][a-zA-Z0-9\\-]+";
+    static final String UTF_8 = "UTF-8";
     private final CommandLineParser commandLineParser = new DefaultParser();
     InputStream inputStream;
     OutputStream outputStream;

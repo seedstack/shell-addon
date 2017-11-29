@@ -37,8 +37,8 @@ class NonInteractiveShell extends AbstractShell {
 
     @Override
     public void start(Environment env) throws IOException {
-        outputPrintStream = new PrintStream(outputStream, true);
-        errorPrintStream = new PrintStream(errorStream, true);
+        outputPrintStream = new PrintStream(outputStream, true, UTF_8);
+        errorPrintStream = new PrintStream(errorStream, true, UTF_8);
 
         ses = new SubjectAwareExecutorService(Executors.newSingleThreadExecutor());
         ses.submit(this);

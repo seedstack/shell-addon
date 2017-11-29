@@ -56,7 +56,7 @@ class InteractiveShell extends AbstractShell {
 
     @Override
     public void start(Environment environment) throws IOException {
-        errorPrintStream = new PrintStream(errorStream, true);
+        errorPrintStream = new PrintStream(errorStream, true, UTF_8);
 
         String user = environment.getEnv().get(Environment.ENV_USER);
 
