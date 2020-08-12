@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -9,13 +9,13 @@ package org.seedstack.shell.internal.commands;
 
 import org.seedstack.seed.command.Command;
 import org.seedstack.seed.command.CommandDefinition;
+import org.seedstack.seed.security.RequiresRoles;
 
-import java.util.Arrays;
-
-@CommandDefinition(scope = "test", name = "list", description = "Test command which returns a list")
-public class CollectionTestCommand implements Command {
+@CommandDefinition(scope = "test", name = "denied", description = "Secured test command")
+public class DeniedSecuredTestCommand implements Command {
     @Override
+    @RequiresRoles("DENIED")
     public Object execute(Object object) throws Exception {
-        return Arrays.asList(1, 2, 3, 4, 5);
+        return "denied";
     }
 }

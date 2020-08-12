@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7,15 +7,16 @@
  */
 package org.seedstack.shell;
 
+import com.google.common.base.Strings;
 import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.connection.channel.direct.Session;
-import org.apache.commons.lang.StringUtils;
 import org.fusesource.jansi.AnsiString;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.seedstack.seed.Configuration;
-import org.seedstack.seed.it.AbstractSeedIT;
+import org.seedstack.seed.testing.junit4.SeedITRunner;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +25,8 @@ import java.net.InetAddress;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ShellIT extends AbstractSeedIT {
+@RunWith(SeedITRunner.class)
+public class ShellIT {
     @Configuration("shell.port")
     private int shellPort;
 
@@ -104,7 +106,7 @@ public class ShellIT extends AbstractSeedIT {
     }
 
     private String ansiToString(String actual) {
-        if (StringUtils.isNotBlank(actual)) {
+        if (!Strings.isNullOrEmpty(actual)) {
             return new AnsiString(actual).getPlain().toString();
         } else {
             return actual;

@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,8 +13,9 @@ import net.schmizz.sshj.userauth.UserAuthException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.seedstack.seed.Configuration;
-import org.seedstack.seed.it.AbstractSeedIT;
+import org.seedstack.seed.testing.junit4.SeedITRunner;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -23,8 +24,8 @@ import java.net.InetAddress;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.fail;
 
-public class ConnectionIT extends AbstractSeedIT {
-
+@RunWith(SeedITRunner.class)
+public class ConnectionIT {
     @Configuration("shell.port")
     private int shellPort;
 

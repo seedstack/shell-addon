@@ -1,6 +1,6 @@
 <!--
 
-    Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+    Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,15 +13,15 @@
     <parent>
         <groupId>org.seedstack.poms</groupId>
         <artifactId>parent-internal</artifactId>
-        <version>3.1.0</version>
+        <version>3.4.9</version>
     </parent>
 
     <groupId>org.seedstack.addons.shell</groupId>
     <artifactId>shell</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <properties>
-        <seed.version>3.4.0</seed.version>
+        <seed.version>3.10.0</seed.version>
 
         <compatibility.version>1.0.0</compatibility.version>
 
@@ -56,10 +56,12 @@
                             <licenseMerge>Apache 2|Apache License, version 2.0</licenseMerge>
                             <licenseMerge>Apache 2|Apache License Version 2.0</licenseMerge>
                             <licenseMerge>Apache 2|Apache 2.0 License</licenseMerge>
+                            <licenseMerge>Apache 2|Apache 2.0</licenseMerge>
                             <licenseMerge>BSD|The New BSD License</licenseMerge>
                             <licenseMerge>BSD|The BSD License</licenseMerge>
                             <licenseMerge>CDDL|CDDL + GPLv2 with classpath exception</licenseMerge>
                             <licenseMerge>LGPL 3.0|GNU Lesser Public License</licenseMerge>
+                            <licenseMerge>MIT License|The MIT License</licenseMerge>
 
                             <licenseMerge>IGNORED_LICENSE|MPL 1.1</licenseMerge>
                             <licenseMerge>IGNORED_LICENSE|LGPL 2.1</licenseMerge>
@@ -94,7 +96,7 @@
 
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-testing</artifactId>
+            <artifactId>seed-testing-junit4</artifactId>
             <version>${seed.version}</version>
             <scope>test</scope>
         </dependency>
@@ -102,6 +104,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
