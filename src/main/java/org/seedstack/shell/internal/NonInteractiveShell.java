@@ -9,19 +9,20 @@ package org.seedstack.shell.internal;
 
 import com.google.common.collect.Lists;
 import com.google.inject.assistedinject.Assisted;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Executors;
-import javax.inject.Inject;
 import org.apache.shiro.concurrent.SubjectAwareExecutorService;
 import org.apache.shiro.util.ThreadContext;
 import org.apache.sshd.server.Environment;
 import org.seedstack.seed.command.Command;
 import org.seedstack.seed.command.StreamCommand;
 import org.seedstack.shell.internal.commands.JsonCommand;
+
+import javax.inject.Inject;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.Executors;
 
 class NonInteractiveShell extends AbstractShell {
     private final String line;
@@ -45,7 +46,9 @@ class NonInteractiveShell extends AbstractShell {
 
     @Override
     public void destroy() {
-        ses.shutdownNow();
+        if (ses != null) {
+            ses.shutdownNow();
+        }
 
         ThreadContext.unbindSubject();
         ThreadContext.unbindSecurityManager();
@@ -69,7 +72,7 @@ class NonInteractiveShell extends AbstractShell {
                     ((StreamCommand) command).execute(inputStream, outputStream, errorStream);
                 } else {
                     Object result = command.execute(null);
-                    if (result != null) {
+                    if (result != null && outputPrintStream != null) {
                         if (result instanceof String) {
                             outputPrintStream.println(stripAnsiCharacters((String) result));
                         } else {

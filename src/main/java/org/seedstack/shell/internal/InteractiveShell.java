@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 import javax.inject.Inject;
 import jline.Terminal;
@@ -151,7 +152,7 @@ class InteractiveShell extends AbstractShell {
                             }
                         }
                     }
-                } catch (Exception e) {
+                } catch (RuntimeException e) {
                     errorPrintStream.print(switchToColor(Ansi.Color.RED));
                     if (stackTraces) {
                         e.printStackTrace(errorPrintStream);
@@ -193,7 +194,7 @@ class InteractiveShell extends AbstractShell {
     private void alterMode(String modeName, String modeValue) {
         if ("output".equals(modeName)) {
             try {
-                defaultOutputMode = OutputMode.valueOf(modeValue.toUpperCase());
+                defaultOutputMode = OutputMode.valueOf(modeValue.toUpperCase(Locale.ENGLISH));
             } catch (IllegalArgumentException e) {
                 throw SeedException.wrap(e, ShellErrorCode.ILLEGAL_MODE_OPTION)
                         .put("supportedOptions", Arrays.toString(OutputMode.values()));
